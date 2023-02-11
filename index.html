@@ -24,8 +24,8 @@
             width: 100%;
             padding: 1rem;
             min-height: 25vh;
-            border: 1px solid black;
-            border-radius: 2rem;
+            border: 1px solid #505050;
+            border-radius: 1rem;
         }
     </style>
     <title>MD</title>
@@ -34,16 +34,32 @@
     <div class="container bg-dark">
         <div class="card">
             <div class="card-body">
-                <input value='A v B' class='form-control' type="text" id="expression">
+                <input list="expressions" placeholder="Clique e selecione uma entrada.." class='form-control' type="text" id="expression">
                 <select class='form-select' name="tautologia-select" id="tautologia-select">
                     <option selected value="com">Comutatividade</option>
+                    <option value="dis">Distributividade</option>
+                    <option value="dm">De Morgan</option>
+                    <option value="dd">Dupla Negação</option>
+                    <option value="ass">Associatividade</option>
                 </select>
+                <datalist id="expressions">
+                    <option value="A v B">Expressão para Comutatividade</option>
+                    <option value="A v ( B ^ C )">Expressão para Distributividade / Comutatividade</option>
+                    <option value="not ( A v B )">Expressão para De Morgan</option>
+                    <option value="not not A">Expressão para Dupla Negação</option>
+                    <option value="(A ^ B ^ C)">Expressão para Associatividade</option>
+                    <option value="(A v B v C)">Expressão para Associatividade</option>
+                  </datalist>
                 <button class="btn btn-primary" id="process">Processar</button>
 
                 <div id="result">
 
                 </div>
-                <p>Nota: apenas reconhecendo Comutatividade para funções simples de V e ^.</p>
+                <p></p>
+                <!-- <p>Nota: apenas reconhecendo Comutatividade para funções simples de V e ^
+                , distributividade para funções Av(B^C)
+                e De Morgan para funções 'not (AvB)'.</p> -->
+                <p class="text-danger">É aconselhado utilizar as expressões pré-definidas, tendo em vista a limitacão do conjunto de reconhecimento do algoritmo.</p>
             </div>
         </div>
     </div>
